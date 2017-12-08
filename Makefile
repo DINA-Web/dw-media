@@ -1,17 +1,18 @@
 ME=$(USER)
 DOCKERHUB_VER=v0.2
 
-all: init up
+all: init db up
 
 init:
-	echo "set up database nf_media"
-	./get_enhanced-media_db-schema.sh
-	docker-compose up -d dbmedia
+	#echo "set up database nf_media"
+	#./get_enhanced-media_db-schema.sh
+	docker-compose up -d db.media
 
 db:
-	docker-compose up -d dbmedia
+	docker-compose up -d db.media
 
-up: db
+up:
+	sleep 15
 	docker-compose up -d
 
 	echo "on Localhost: Please make sure you have beta-media.dina-web.net in your /etc/hosts!"
